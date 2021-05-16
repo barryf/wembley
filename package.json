@@ -1,0 +1,14 @@
+{
+  "name": "webmention",
+  "version": "0.0.0",
+  "description": "Webmention receiver",
+  "scripts": {
+    "start": "PORT=3335 npx sandbox"
+  },
+  "devDependencies": {
+    "@architect/architect": "^8.5.11"
+  },
+  "dependencies": {
+    "@architect/functions": "^3.13.11"
+  }
+}
