@@ -45,9 +45,11 @@ async function http (request) {
 
   const id = await create(source, target)
 
-  await status.create({
-    webmentionId: id,
-    message: 'Received webmention'
+  await status.log(id, 'Received webmention')
+
+  await arc.events.publish({
+    name: 'verify',
+    payload: { id }
   })
 
   return {
