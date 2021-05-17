@@ -9,6 +9,7 @@
     "@architect/architect": "^8.5.11"
   },
   "dependencies": {
-    "@architect/functions": "^3.13.11"
+    "@architect/functions": "^3.13.11",
+    "node-fetch": "^2.6.1"
   }
 }
