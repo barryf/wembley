@@ -6,7 +6,7 @@
     "start": "PORT=3335 npx sandbox"
   },
   "devDependencies": {
-    "@architect/architect": "^8.5.11"
+    "@architect/architect": "^8.5.12"
   },
   "dependencies": {
     "@architect/functions": "^3.13.11",
