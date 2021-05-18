@@ -3,11 +3,13 @@
 WIP [Webmention](https://webmention.net) receiver
 
 * Node.js with [Architect framework](https://arc.codes)
-* Deploy to AWS using Lambda, DynamoDB, SNS
+* Deploy to AWS using Lambda, API Gateway, DynamoDB, SNS
 
 ## Outline
 
-* Receive /webmention POST request with source and target parameters
+### Receiving webmentions
+
+* POST /webmention with source and target form parameters
 	* Return 400 if source and target are not valid URLs
 	* Return 400 if source is the same as target
 	* Return 400 if target is not a known domain
@@ -33,8 +35,15 @@ WIP [Webmention](https://webmention.net) receiver
 	* Get the webmention record from the database
 	* Send POST to config webhook URL with webmention record in JSON
 
+### Querying webmentions
+
+* GET /webmention with target query parameter
+	* Query for webmentions matching the target
+	* Return 404 if no webmentions are found
+	* Return 200 with list of webmentions as HTML or JSON depending on Accept header
+
 ## ENV
 
 * `ROOT_URL` e.g. https://webmention.barryfrost.com/
-* `DOMAINS` e.g. `barryfrost.com`
+* `DOMAINS` e.g. barryfrost.com
 * `WEBHOOK_URL` e.g. https://barryfrost.com/webmention
