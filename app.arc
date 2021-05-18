@@ -6,7 +6,7 @@ region eu-west-2
 
 @http
 get /
-get /webmention/:id
+get /webmention
 post /webmention
 
 @events
@@ -15,8 +15,6 @@ send
 verify
 
 @tables
-accounts
-  domain *String
 blocks
   domain *String
 statuses
