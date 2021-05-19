@@ -7,6 +7,7 @@ region eu-west-2
 @http
 get /
 get /webmention
+get /webmention/:id
 post /webmention
 
 @events
