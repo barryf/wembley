@@ -18,9 +18,10 @@ async function handler (event) {
     return
   }
 
+  // fetch default timeout is 5s and 20 redirects
   const response = await fetch(webmention.source, {
     method: 'get',
-    size: 1024 * 1024
+    size: 1024 * 1024 // 1mb
   })
   if (!response.ok) {
     status.error(id, 'Source could not be fetched')
