@@ -9,7 +9,8 @@ function getXRayUrl (url) {
 }
 
 async function fetchSource (webmention) {
-  const response = await fetch(getXRayUrl(webmention.source))
+  const url = getXRayUrl(webmention.source)
+  const response = await fetch(url)
   if (!response.ok) return
   const jf2 = await response.json()
   if (!('data' in jf2)) return
@@ -29,7 +30,11 @@ async function handler (event) {
   const jf2 = await fetchSource(webmention)
   if (!jf2) {
     status.error(id, 'Source could not be parsed')
+    return
   }
+  status.log(id, 'Source was parsed')
+
+  // TODO: upload photo to cloudinary
 
   const post = {
     url: jf2.url,
