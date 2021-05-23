@@ -2,11 +2,18 @@ const fetch = require('node-fetch')
 const arc = require('@architect/functions')
 const status = require('@architect/shared/status')
 
-const validContentTypes = [
-  'text/html',
-  'application/json',
-  'text/plain'
-]
+function validContentTypes (contentType) {
+  const types = [
+    'text/html',
+    'application/json',
+    'text/plain'
+  ]
+  for (const type of types) {
+    if (contentType.startsWith(type)) {
+      return true
+    }
+  }
+}
 
 async function handler (event) {
   const { id } = event
@@ -28,7 +35,7 @@ async function handler (event) {
     return
   }
   const contentType = response.headers.get('content-type')
-  if (!validContentTypes.includes(contentType)) {
+  if (!validContentTypes(contentType)) {
     status.error(id, 'Source Content-Type was invalid')
     return
   }
