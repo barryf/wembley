@@ -1,14 +1,6 @@
 const arc = require('@architect/functions')
 const status = require('@architect/shared/status')
-
-function isValidURL (string) {
-  try {
-    new URL(string) // eslint-disable-line
-  } catch (_) {
-    return false
-  }
-  return true
-}
+const isValidURL = require('@architect/shared/valid-url')
 
 function validate (source, target) {
   if (!source) return 'source parameter is missing'
