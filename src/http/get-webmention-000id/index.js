@@ -36,8 +36,13 @@ async function http (request) {
 
   const statuses = await findStatusesByWebmention(id)
 
-  const content = view({ webmention, statuses })
+  if (request.headers.accept.startsWith('application/json')) {
+    return {
+      json: { ...webmention, statuses }
+    }
+  }
 
+  const content = view({ webmention, statuses })
   return {
     html: layout(content)
   }
