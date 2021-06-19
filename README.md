@@ -4,7 +4,7 @@ This is a [Webmention](https://webmention.net) receiver to be used as an
 endpoint to receive webmentions for your website.
 
 It's still very much a work-in-progress and not ready for use, but I wanted to
-share progress as the spec evolves in the [IndieWeb](https://indieweb.org/)
+share progress as the spec evolves in the [IndieWeb](https://indieweb.org)
 community.
 
 * Node.js with [Architect framework](https://arc.codes)
@@ -35,7 +35,8 @@ community.
 	* Send source URL to [XRay](https://xray.p3k.io) to parse into JF2
 	* Log status "Source was parsed" or error if unsuccessful
 	* Upload author photo to Cloudinary
-	* Create a JF2 object (format TBD - see https://github.com/indieweb/webmention-ecosystem/issues/2)
+	* Create a JF2 object (format TBD - see
+    https://github.com/indieweb/webmention-ecosystem/issues/2)
 	* Update webmention record with JF2 post in table
 	* Publish send event with `id` payload
 * Handle **send** event with `id` payload
@@ -47,17 +48,19 @@ community.
 * **GET /webmention** with `target` query parameter
 	* Query for webmentions matching `target`
 	* Return 404 if no webmentions are found
-	* Return 200 with list of webmentions as HTML (default) or JSON depending on `Accept` header
+	* Return 200 with list of webmentions as HTML (default) or JSON depending on
+    `Accept` header
 
 ### Webmention statuses
 
 * **GET /webmention/:id**
   * Query for statuses matching `id`
   * Return 404 if no statuses are found
-  * Return 200 with list of statuses as HTML (default) or JSON depending on `Accept` header
+  * Return 200 with list of statuses as HTML (default) or JSON depending on
+    `Accept` header
 
 ## env
 
-* `ROOT_URL` e.g. https://webmention.barryfrost.com/
+* `ROOT_URL` e.g. https://wembley.barryfrost.com/
 * `DOMAINS` e.g. barryfrost.com
-* `WEBHOOK_URL` e.g. https://barryfrost.com/webmention
+* `WEBHOOK_URL` e.g. https://api.barryfrost.com/webmention
