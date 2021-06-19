@@ -2,13 +2,20 @@ const arc = require('@architect/functions')
 const status = require('@architect/shared/status')
 const isValidURL = require('@architect/shared/valid-url')
 
+async function findBlock (source) {
+  const data = await arc.tables()
+  const domain = new URL(source).host
+  const block = data.blocks.get({ domain })
+  return block
+}
+
 function validate (source, target) {
   if (!source) return 'source parameter is missing'
   if (!isValidURL(source)) return 'source is not a valid URL'
   if (!target) return 'target parameter is missing'
   if (!isValidURL(target)) return 'target is not a valid URL'
   if (source === target) return 'source and target are the same'
-  // TODO: check if source's domain is on blocklist
+  if (findBlock(source)) return 'source is blocked'
 }
 
 async function create (source, target) {
