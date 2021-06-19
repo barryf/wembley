@@ -1,6 +1,6 @@
 {
-  "name": "webmention",
-  "version": "0.0.0",
+  "name": "wembley",
+  "version": "0.1.0",
   "description": "Webmention receiver",
   "scripts": {
     "start": "PORT=3335 npx sandbox"
